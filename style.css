@@ -1,0 +1,330 @@
+:root {
+    --gold: #c5a059;
+    --gold-light: #e6d5b8;
+    --black: #1a1a1a;
+    --gray-dark: #333333;
+    --gray-light: #f9f9f9;
+    --white: #ffffff;
+    --border: #e0e0e0;
+    --shadow: rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f2f2f2;
+    color: var(--black);
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px var(--shadow);
+    border-top: 4px solid var(--black);
+}
+
+header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.form-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+header p {
+    color: var(--gold);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    color: var(--gray-dark);
+}
+
+input, textarea {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    font-size: 14px;
+    transition: all 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background-color: #fffdf9;
+}
+
+.signatures-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: var(--gray-light);
+    border-left: 3px solid var(--gold);
+}
+
+.sig-group h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: var(--black);
+}
+
+.sig-group input {
+    width: 100%;
+    margin-bottom: 10px;
+    background: white;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+button {
+    flex: 1;
+    padding: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    border-radius: 0;
+}
+
+.btn-primary { background: var(--black); color: white; }
+.btn-primary:hover { background: var(--gray-dark); transform: translateY(-2px); }
+.btn-secondary { background: var(--gold); color: white; }
+.btn-secondary:hover { background: #b08d4a; transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 1px solid var(--black); color: var(--black); }
+.btn-outline:hover { background: var(--black); color: white; }
+
+/* ESTILO DO RELATÓRIO (PAPEL TIMBRADO FIT FEMME) */
+.relatorio-hidden {
+    display: none;
+}
+
+.sheet {
+    background: white;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 25mm 20mm;
+    margin: 50px auto;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0,0,0,0.1);
+}
+
+.luxury-border {
+    position: absolute;
+    top: 10mm;
+    left: 10mm;
+    right: 10mm;
+    bottom: 10mm;
+    border: 1px solid var(--gold-light);
+    pointer-events: none;
+}
+
+.timbrado-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.logo-fitfemme .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    letter-spacing: 8px;
+    color: var(--black);
+    line-height: 1;
+}
+
+.brand-tagline {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 600;
+    display: block;
+    margin-top: 5px;
+}
+
+.empresa-info {
+    text-align: right;
+    font-size: 10px;
+    color: var(--gray-dark);
+    line-height: 1.8;
+}
+
+.doc-header {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid var(--black);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+
+.doc-type {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.doc-meta {
+    text-align: right;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.client-section {
+    margin-bottom: 40px;
+}
+
+.label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.value {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--black);
+    border-bottom: 1px solid var(--gray-light);
+    padding-bottom: 5px;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+.items-table th {
+    border-bottom: 2px solid var(--black);
+    padding: 15px 10px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.items-table td {
+    padding: 20px 10px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+}
+
+.item-desc { font-weight: 600; }
+.center { text-align: center; }
+.right { text-align: right; }
+.total-cell { font-weight: 700; font-size: 15px; color: var(--gold); }
+
+.obs-box {
+    margin-bottom: 60px;
+    background: #fafafa;
+    padding: 20px;
+}
+
+.obs-box p#r9 {
+    font-size: 12px;
+    color: var(--gray-dark);
+    font-style: italic;
+}
+
+.signatures-display {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.sig-box {
+    width: 40%;
+    text-align: center;
+}
+
+.sig-line {
+    border-top: 1px solid var(--black);
+    margin-bottom: 10px;
+}
+
+.sig-name { font-weight: 700; font-size: 13px; text-transform: uppercase; }
+.sig-role { font-size: 10px; color: var(--gold); font-weight: 600; letter-spacing: 1px; }
+
+.timbrado-footer {
+    position: absolute;
+    bottom: 15mm;
+    left: 20mm;
+    right: 20mm;
+    text-align: center;
+}
+
+.footer-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin-bottom: 15px;
+}
+
+.timbrado-footer p {
+    font-size: 9px;
+    color: #999;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+@media print {
+    body { background: white; padding: 0; }
+    .no-print { display: none; }
+    .relatorio-hidden { display: block; }
+    .sheet { margin: 0; box-shadow: none; width: 100%; height: 100%; }
+}

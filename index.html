@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Femme - Pedido de Compra Luxury</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container no-print">
+        <header>
+            <div class="form-logo">FIT FEMME</div>
+            <p>Gerador de Documentos Oficiais - Luxury Fitness Wear</p>
+        </header>
+
+        <section class="form-section">
+            <div class="grid-form">
+                <div class="campo">
+                    <label for="c1">Cliente / Destinatário</label>
+                    <input type="text" id="c1" placeholder="Nome da Cliente ou Empresa">
+                </div>
+                <div class="campo">
+                    <label for="c2">Data de Emissão</label>
+                    <input type="date" id="c2">
+                </div>
+                <div class="campo full-width">
+                    <label for="c3">Descrição do item</label>
+                    <input type="text" id="c3" placeholder="Descrição detalhada">
+                </div>
+                <div class="campo">
+                    <label for="c4">Quantidade</label>
+                    <input type="number" id="c4" placeholder="0" oninput="calcularTotal()">
+                </div>
+                <div class="campo">
+                    <label for="c5">Valor Unitário (R$)</label>
+                    <input type="number" step="0.01" id="c5" placeholder="0.00" oninput="calcularTotal()">
+                </div>
+                <div class="campo">
+                    <label for="c6">Valor Total (R$)</label>
+                    <input type="number" id="c6" placeholder="0.00" readonly>
+                </div>
+            </div>
+
+            <div class="signatures-form">
+                <div class="sig-group">
+                    <h3>Solicitante</h3>
+                    <input type="text" id="c7_nome" placeholder="Nome">
+                    <input type="text" id="c7_cargo" placeholder="Cargo/Setor">
+                </div>
+                <div class="sig-group">
+                    <h3>Aprovador</h3>
+                    <input type="text" id="c8_nome" placeholder="Nome">
+                    <input type="text" id="c8_cargo" placeholder="Cargo/Diretoria">
+                </div>
+            </div>
+
+            <div class="campo full-width">
+                <label for="c9">Observações Adicionais</label>
+                <textarea id="c9" rows="3" placeholder="Condições de frete, prazos ou personalizações..."></textarea>
+            </div>
+
+            <div class="actions">
+                <button onclick="gerar()" class="btn-primary">Visualizar Documento</button>
+                <button onclick="gerar(true)" class="btn-secondary">Exportar PDF Premium</button>
+                <button onclick="window.print()" class="btn-outline">Imprimir</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ÁREA DO RELATÓRIO (PAPEL TIMBRADO FIT FEMME) -->
+    <div id="relatorio-container" class="relatorio-hidden">
+        <div id="relatorio" class="sheet">
+            <div class="luxury-border"></div>
+            
+            <header class="timbrado-header">
+                <div class="logo-fitfemme">
+                    <h1 class="brand-name">FIT FEMME</h1>
+                    <span class="brand-tagline">LUXURY FITNESS WEAR</span>
+                </div>
+                <div class="empresa-info">
+                    <p><strong>FIT FEMME INDÚSTRIA DE MODA LTDA</strong></p>
+                    <p>Alameda Oscar Freire, 1200 - Jardins</p>
+                    <p>São Paulo, SP | CEP: 01426-001</p>
+                    <p>CNPJ: 45.987.321/0001-08</p>
+                    <p>www.fitfemme.com.br</p>
+                </div>
+            </header>
+
+            <div class="doc-header">
+                <div class="doc-type">PEDIDO DE COMPRA</div>
+                <div class="doc-meta">
+                    <p>Nº DO DOCUMENTO: <span id="doc-id">#FF-2026-0842</span></p>
+                    <p>DATA: <span id="r2">--/--/----</span></p>
+                </div>
+            </div>
+
+            <div class="client-section">
+                <p class="label">DESTINATÁRIO / CLIENTE:</p>
+                <p class="value" id="r1">---------------------------</p>
+            </div>
+
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th>DESCRIÇÃO DO PRODUTO / SERVIÇO</th>
+                        <th class="center">QTD</th>
+                        <th class="right">UNITÁRIO</th>
+                        <th class="right">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="r3" class="item-desc">---------------------------</td>
+                        <td id="r4" class="center">--</td>
+                        <td id="r5" class="right">R$ 0,00</td>
+                        <td id="r6" class="right total-cell">R$ 0,00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="obs-box">
+                <p class="label">OBSERVAÇÕES:</p>
+                <p id="r9">Nenhuma observação informada para este pedido.</p>
+            </div>
+
+            <div class="signatures-display">
+                <div class="sig-box">
+                    <div class="sig-line"></div>
+                    <p class="sig-name" id="r7_nome">---------------------------</p>
+                    <p class="sig-role" id="r7_cargo">Solicitante</p>
+                </div>
+                <div class="sig-box">
+                    <div class="sig-line"></div>
+                    <p class="sig-name" id="r8_nome">---------------------------</p>
+                    <p class="sig-role" id="r8_cargo">Aprovador</p>
+                </div>
+            </div>
+
+            <footer class="timbrado-footer">
+                <div class="footer-line"></div>
+                <p>Este documento é oficial e exclusivo da Fit Femme. A reprodução não autorizada é proibida.</p>
+                <p>Qualidade, Elegância e Performance em cada detalhe.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
